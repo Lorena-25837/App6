@@ -68,11 +68,24 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 </div>
 	
 <div id="content" class="w3-container">
-	<p>Content goes here.</p>
-		
+	<p>HTML5 Drawing Canvas:</p>
+	
+	<canvas id="canvas" width="500" height="300" style="border:2px solid #000000;"></canvas>
+	<!--Creating the Canvas-->
+	<button onclick="drawRectangle()">Draw Rectangle</button>
+	<!--Button for Rectangle-->
+	<button onclick="writeName()">Write Name</button>
+	<!--Button for Name-->
+	<button onclick="generateImage()">Generate Image</button>
+	<!--Button for Image-->
+	<button onclick="clearCanvas()">Clear Canvas</button>
+	<!--Button to Clear-->
+	
 	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
  	
 	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+
+	<img id="picture" src="https://img.freepik.com/free-psd/pink-glossy-heart-symbol-love-affection_191095-83833.jpg?t=st=1743024723~exp=1743028323~hmac=23ba8ea06509461c4309a92cf03cd1873f9d73fb928e85d0b14f2ddebfdc028a&w=1380" width="150" height="150">
 
 <footer class="w3-bottom w3-container w3-flat-carrot">
 	<p>DIY!</p>
