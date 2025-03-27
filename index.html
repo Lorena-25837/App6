@@ -117,8 +117,8 @@ console.log("This file last modified " + docMod); // generates message in javaSc
     	var c = document.getElementById("myCanvas");
     	var ctx = c.getContext("2d");
 
-    	var rectWidth = c.width * 0.3;  // 30% of canvas width
-    	var rectHeight = c.height * 0.4;  // 40% of canvas height
+    	var rectWidth = c.width * 0.4;  // 40% of canvas width
+    	var rectHeight = c.height * 0.3;  // 30% of canvas height
     	var x = (c.width - rectWidth) / 2;
     	var y = (c.height - rectHeight) / 2;
 
@@ -146,19 +146,30 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 	function generateImage() {
     	var c = document.getElementById("myCanvas");
     	var ctx = c.getContext("2d");
-
     	var img = document.getElementById("Picture");
 
-    	var imgWidth = c.width * 0.3;  // 30% of canvas width
-    	var imgHeight = c.height * 0.4;  // 40% of canvas height
-	// Scale image based on canvas size
+    	var maxWidth = c.width * 0.5;  // Set max width to 50% of canvas width
+    	var maxHeight = c.height * 0.5; // Set max height to 50% of canvas height
+
+    	var imgAspect = img.naturalWidth / img.naturalHeight;
+    	// Get the original aspect ratio of the image
+    
+    	var imgWidth = maxWidth;
+    	var imgHeight = maxWidth / imgAspect;
+    	// Adjust width and height to maintain aspect ratio
+
+   	if (imgHeight > maxHeight) {
+        imgHeight = maxHeight;
+        imgWidth = maxHeight * imgAspect;
+    	}
+    	// Center the image
 		
     	var x = (c.width - imgWidth) / 2;
-   	var y = (c.height - imgHeight) / 2;
+    	var y = (c.height - imgHeight) / 2;
 
     	ctx.drawImage(img, x, y, imgWidth, imgHeight);
 	}
-	// Center the image
+	//Image Code
 	
 	function clearCanvas(){
  	c.width = c.width;
