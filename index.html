@@ -61,7 +61,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 <div id="content" class="w3-container">
 	<p>HTML5 Drawing Canvas:</p>
 
-	<canvas id="myCanvas" width="640" height="400" style="border:2px solid #000000;"></canvas>
+	<canvas id="myCanvas" style="border:2px solid #000000; width: 100%; height: auto;"></canvas>
 	<!--Creating the Canvas-->
 
 	<br>
@@ -95,39 +95,70 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 	var c = document.getElementById("myCanvas");
 	//Canvas Script
 	
-        var ctx = c.getContext("2d");
-	//Drawing Context
+	function resizeCanvas() {
+    	var c = document.getElementById("myCanvas");
+    	var ctx = c.getContext("2d");
+
+	c.width = window.innerWidth * 0.9;  // 90% of screen width
+    	c.height = window.innerHeight * 0.5;  // 50% of screen height
+    	// Set canvas size to fit the screen width
+
+    	drawRectangle();
+    	writeName();
+	generateImage();
+	}
+	// Redraw elements after resizing
+
+	window.addEventListener("resize", resizeCanvas);
+	window.onload = resizeCanvas;
+	//Canvas Context
 	
-	function drawRectangle(){
-	var rectWidth = 160, rectHeight = 100;
-	var x = (c.width - rectWidth) / 2;
-	var y = (c.height - rectHeight) / 2;
-	ctx.fillStyle = "black";
-	ctx.fillRect(x, y, rectWidth, rectHeight);
+	function drawRectangle() {
+    	var c = document.getElementById("myCanvas");
+    	var ctx = c.getContext("2d");
+
+    	var rectWidth = c.width * 0.3;  // 30% of canvas width
+    	var rectHeight = c.height * 0.4;  // 40% of canvas height
+    	var x = (c.width - rectWidth) / 2;
+    	var y = (c.height - rectHeight) / 2;
+
+    	ctx.fillStyle = "black";
+    	ctx.fillRect(x, y, rectWidth, rectHeight);
 	}
 	//Rectangle Script
 	
-	function writeName(){
-	ctx.fillStyle = "black";
-    	ctx.font = "20px Times New Roman";
-   	ctx.textAlign = "center";  
-	// Centers Text Horizontally
-   	ctx.textBaseline = "middle";  
-	// Centers Text Vertically
-	var x = c.width / 2;
-	var y = c.height / 2;
-	ctx.fillText("Lorena Tellez", x, y);
+	function writeName() {
+    	var c = document.getElementById("myCanvas");
+    	var ctx = c.getContext("2d");
+
+   	ctx.fillStyle = "black";
+   	ctx.font = (c.width * 0.05) + "px Times New Roman";  // Adjust font size dynamically
+    	ctx.textAlign = "center";
+    	ctx.textBaseline = "middle";
+
+    	var x = c.width / 2;
+    	var y = c.height / 2;
+
+    	ctx.fillText("Lorena Tellez", x, y);
 	}
 	//Print Name Script
 	
-	function generateImage(){
-   	var img = document.getElementById("Picture");
-   	var imgWidth = 100, imgHeight = 300;  
-	var x = (c.width - imgWidth) / 2;
-	var y = (c.height - imgHeight) / 2;
-	ctx.drawImage(img, x, y, imgWidth, imgHeight);
+	function generateImage() {
+    	var c = document.getElementById("myCanvas");
+    	var ctx = c.getContext("2d");
+
+    	var img = document.getElementById("Picture");
+
+    	var imgWidth = c.width * 0.3;  // 30% of canvas width
+    	var imgHeight = c.height * 0.4;  // 40% of canvas height
+	// Scale image based on canvas size
+		
+    	var x = (c.width - imgWidth) / 2;
+   	var y = (c.height - imgHeight) / 2;
+
+    	ctx.drawImage(img, x, y, imgWidth, imgHeight);
 	}
-	//Image Generation--I'm Praying It's Centered
+	// Center the image
 	
 	function clearCanvas(){
  	c.width = c.width;
