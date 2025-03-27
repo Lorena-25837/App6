@@ -24,7 +24,6 @@ blehhhh
 https://www.w3schools.com/w3css/default.asp
 https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-file
 -->
-	
    <head> 
       <title>App6-HTML5-Canvas</title>  
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -99,25 +98,20 @@ console.log("This file last modified " + docMod); // generates message in javaSc
     	var c = document.getElementById("myCanvas");
     	var ctx = c.getContext("2d");
 
-	c.width = window.innerWidth * 0.9;  // 90% of screen width
+    	c.width = window.innerWidth * 0.9;  // 90% of screen width
     	c.height = window.innerHeight * 0.5;  // 50% of screen height
-    	// Set canvas size to fit the screen width
-
-    	drawRectangle();
-    	writeName();
-	generateImage();
 	}
-	// Redraw elements after resizing
+    	// Redraw elements after resizing (do NOT call drawRectangle(), writeName(), or generateImage here)
 
 	window.addEventListener("resize", resizeCanvas);
-	window.onload = resizeCanvas;
+	window.onload = resizeCanvas; // Only resize canvas on load, no drawing
+
 	//Canvas Context
-	
 	function drawRectangle() {
     	var c = document.getElementById("myCanvas");
     	var ctx = c.getContext("2d");
 
-    	var rectWidth = c.width * 0.4;  // 40% of canvas width
+    	var rectWidth = c.width * 0.375;  // 37.5% of canvas width
     	var rectHeight = c.height * 0.3;  // 30% of canvas height
     	var x = (c.width - rectWidth) / 2;
     	var y = (c.height - rectHeight) / 2;
@@ -171,8 +165,10 @@ console.log("This file last modified " + docMod); // generates message in javaSc
 	}
 	//Image Code
 	
-	function clearCanvas(){
- 	c.width = c.width;
+	function clearCanvas() {
+    	var c = document.getElementById("myCanvas");
+    	var ctx = c.getContext("2d");
+    	ctx.clearRect(0, 0, c.width, c.height); // Clears entire canvas
 	}
 	//Clear Canvas!
 	
